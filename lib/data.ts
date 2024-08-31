@@ -54,7 +54,7 @@ export const experiencesData = [
     title: "Project Intern at Jio PLatforms",
     location: "Remote",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      "Working with LLMs",
     icon: React.createElement(CgWorkAlt),
     date: "Aug' 2024 - present",
   },
