@@ -1,19 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { BsLinkedin } from "react-icons/bs";
+import { FaCircle, FaDownload, FaGithubSquare } from "react-icons/fa";
+import { GrContactInfo } from "react-icons/gr";
 import { useSectionInView } from "@/lib/hooks";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import PFP from "@/public/portfolio-pfp.jpeg";
+import { HoverBorderGradient } from "./ui/border-hover";
+import { Button } from "./ui/button";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
   return (
     <section
@@ -31,15 +29,10 @@ export default function Intro() {
               duration: 0.2,
             }}
           >
-            <Image
-              src={PFP}
-              alt="Ricardo portrait"
-              width="192"
-              height="192"
-              quality="95"
-              priority={true}
-              className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
-            />
+            <HoverBorderGradient className="flex items-center gap-2 text-sm">
+              <FaCircle className="size-2 animate-pulse fill-green-600 text-green-600" />
+              Available for work
+            </HoverBorderGradient>
           </motion.div>
 
           <motion.span
@@ -52,7 +45,7 @@ export default function Intro() {
               delay: 0.1,
               duration: 0.7,
             }}
-          ></motion.span>
+          />
         </div>
       </div>
 
@@ -61,44 +54,43 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-[48px]">Rupesh Piwal</h1>
-        <h2>Fullstack Developer</h2>
-        <p className="text-[16px]">
-          Driven by a passion for building dynamic fullstack web applications, I
-          specialize in blending creativity with functionality to create
-          impactful and intuitive user experiences.
+        <div className="text-3xl sm:text-5xl md:text-7xl font-bold">
+          Rupesh Piwal
+        </div>
+        <div className="text-3xl sm:text-5xl md:text-7xl font-bold">
+          Full-Stack Developer
+        </div>
+        <p className="text-gray-400 text-center text-xs sm:text-sm">
+          I am passionate about crafting innovative fullstack web applications.
         </p>
       </motion.h1>
 
       <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
+        initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
+        transition={{ ease: "easeOut", duration: 1 }}
+        className="flex flex-col sm:flex-row sm:gap-5 gap-2 items-center"
       >
-        <Link
-          href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
-          onClick={() => {
-            setActiveSection("Contact");
-            setTimeOfLastClick(Date.now());
-          }}
-        >
-          Contact me here{" "}
-          <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
-        </Link>
+        <Button asChild>
+          <Link
+            href="/Mayank_resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaDownload className="mr-2" />
+            Download My Resume
+          </Link>
+        </Button>
 
-        <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/CV.pdf"
-          download
-        >
-          Download CV{" "}
-          <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
-        </a>
+        <Button asChild>
+          <Link href="/#contact">
+            <GrContactInfo className="mr-2 text-xl" />
+            Contact Me
+          </Link>
+        </Button>
+      </motion.div>
 
+      <div className="flex gap-4 justify-center mt-4">
         <a
           className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
           href="https://linkedin.com"
@@ -114,7 +106,7 @@ export default function Intro() {
         >
           <FaGithubSquare />
         </a>
-      </motion.div>
+      </div>
     </section>
   );
 }
