@@ -2,17 +2,17 @@ import About from "@/components/about";
 import Contact from "@/components/contact";
 import Experience from "@/components/experience";
 import Intro from "@/components/intro";
-import Projects from "@/components/projects";
+import Myprojects from "@/components/Projects/MyProjects";
 import SectionDivider from "@/components/section-divider";
 import Skills from "@/components/skills";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center px-4 dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2]">
+    <main className="flex flex-col items-center px-4 ">
       <Intro />
       <SectionDivider />
       <About />
-      <Projects />
+      <Myprojects />
       <Skills />
       <Experience />
       <Contact />
